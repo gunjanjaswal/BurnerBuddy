@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FormGuard</title>
+  <link rel="stylesheet" href="../css/popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>FormGuard</h1>
+      <div class="tabs">
+        <button id="tab-inbox" class="tab-button active">Inbox</button>
+        <button id="tab-accounts" class="tab-button">My Accounts</button>
+      </div>
+    </header>
+    
+    <div id="inbox-view" class="view active">
+      <div id="no-messages" class="message-placeholder">
+        <p>No messages yet</p>
+        <p class="small">Messages will appear here when they arrive</p>
+      </div>
+      <div id="message-list"></div>
+      <div id="message-detail" class="hidden">
+        <div class="message-header">
+          <button id="back-to-list" class="back-button">← Back</button>
+          <h2 id="message-subject"></h2>
+          <div class="message-meta">
+            <div id="message-from"></div>
+            <div id="message-date"></div>
+          </div>
+        </div>
+        <div id="message-content"></div>
+        <div class="message-actions">
+          <button id="confirm-button" class="primary-button">Confirm Email</button>
+        </div>
+      </div>
+    </div>
+    
+    <div id="accounts-view" class="view">
+      <div id="no-accounts" class="message-placeholder">
+        <p>No protected accounts yet</p>
+        <p class="small">Right-click on any form field and select "Fill with FormGuard"</p>
+      </div>
+      <div id="accounts-list"></div>
+      
+      <div class="email-actions">
+        <button id="check-emails-btn" class="action-button">Check for Emails</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../js/popup.js"></script>
+</body>
+</html>

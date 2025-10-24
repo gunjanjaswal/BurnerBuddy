@@ -1,0 +1,280 @@
+/* Popup styles for FormGuard extension */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.container {
+  width: 350px;
+  min-height: 400px;
+  max-height: 600px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: #4a6cf7;
+  color: white;
+  padding: 12px 16px;
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.tab-button:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.tab-button.active {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.view {
+  display: none;
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.view.active {
+  display: block;
+}
+
+.message-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  text-align: center;
+  color: #888;
+}
+
+.message-placeholder p {
+  margin-bottom: 8px;
+}
+
+.message-placeholder .small {
+  font-size: 12px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Message list styles */
+.message-item {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.message-item:hover {
+  background-color: #f0f0f0;
+}
+
+.message-item.unread {
+  background-color: #f0f7ff;
+}
+
+.message-item.unread:hover {
+  background-color: #e0f0ff;
+}
+
+.message-subject {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.message-intro {
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+
+.message-time {
+  font-size: 12px;
+  color: #888;
+}
+
+/* Message detail styles */
+.message-header {
+  margin-bottom: 16px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #4a6cf7;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 8px;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
+
+#message-subject {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.message-meta {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+#message-content {
+  border-top: 1px solid #eee;
+  padding-top: 16px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+#message-content a {
+  color: #4a6cf7;
+  text-decoration: none;
+}
+
+#message-content a:hover {
+  text-decoration: underline;
+}
+
+.message-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.primary-button {
+  background-color: #4a6cf7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.primary-button:hover {
+  background-color: #3a5ce7;
+}
+
+/* Account list styles */
+.account-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.account-item:hover {
+  background-color: #f0f0f0;
+}
+
+.account-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.account-email {
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.account-date {
+  font-size: 12px;
+  color: #888;
+}
+
+.message-count {
+  background-color: #ddd;
+  color: #666;
+  font-size: 12px;
+  font-weight: 600;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-count.has-unread {
+  background-color: #4a6cf7;
+  color: white;
+}
+
+/* Email actions styles */
+.email-actions {
+  margin-top: 20px;
+  padding: 15px;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.action-button {
+  background-color: #4a6cf7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-button:hover {
+  background-color: #3a5ce7;
+}
+
+.action-button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+  opacity: 0.7;
+}

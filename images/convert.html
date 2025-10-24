@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SVG to PNG Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .preview {
+            display: flex;
+            gap: 20px;
+        }
+        .icon-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4a6cf7;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>FormGuard Icon Converter</h1>
+    <div class="container">
+        <div class="preview">
+            <div class="icon-container">
+                <h3>16x16</h3>
+                <canvas id="canvas16" width="16" height="16"></canvas>
+                <button onclick="downloadPNG(16)">Download 16x16</button>
+            </div>
+            <div class="icon-container">
+                <h3>48x48</h3>
+                <canvas id="canvas48" width="48" height="48"></canvas>
+                <button onclick="downloadPNG(48)">Download 48x48</button>
+            </div>
+            <div class="icon-container">
+                <h3>128x128</h3>
+                <canvas id="canvas128" width="128" height="128"></canvas>
+                <button onclick="downloadPNG(128)">Download 128x128</button>
+            </div>
+        </div>
+        
+        <h2>Waiting Icons</h2>
+        <div class="preview">
+            <div class="icon-container">
+                <h3>16x16 Waiting</h3>
+                <canvas id="canvas16_waiting" width="16" height="16"></canvas>
+                <button onclick="downloadPNG(16, 'waiting')">Download 16x16 Waiting</button>
+            </div>
+            <div class="icon-container">
+                <h3>48x48 Waiting</h3>
+                <canvas id="canvas48_waiting" width="48" height="48"></canvas>
+                <button onclick="downloadPNG(48, 'waiting')">Download 48x48 Waiting</button>
+            </div>
+            <div class="icon-container">
+                <h3>128x128 Waiting</h3>
+                <canvas id="canvas128_waiting" width="128" height="128"></canvas>
+                <button onclick="downloadPNG(128, 'waiting')">Download 128x128 Waiting</button>
+            </div>
+        </div>
+        
+        <h2>New Message Icons</h2>
+        <div class="preview">
+            <div class="icon-container">
+                <h3>16x16 New</h3>
+                <canvas id="canvas16_new" width="16" height="16"></canvas>
+                <button onclick="downloadPNG(16, 'new')">Download 16x16 New</button>
+            </div>
+            <div class="icon-container">
+                <h3>48x48 New</h3>
+                <canvas id="canvas48_new" width="48" height="48"></canvas>
+                <button onclick="downloadPNG(48, 'new')">Download 48x48 New</button>
+            </div>
+            <div class="icon-container">
+                <h3>128x128 New</h3>
+                <canvas id="canvas128_new" width="128" height="128"></canvas>
+                <button onclick="downloadPNG(128, 'new')">Download 128x128 New</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load the SVG
+        const img = new Image();
+        img.onload = function() {
+            drawIcon(16);
+            drawIcon(48);
+            drawIcon(128);
+            
+            drawIcon(16, 'waiting');
+            drawIcon(48, 'waiting');
+            drawIcon(128, 'waiting');
+            
+            drawIcon(16, 'new');
+            drawIcon(48, 'new');
+            drawIcon(128, 'new');
+        };
+        img.src = 'icon.svg';
+
+        function drawIcon(size, type = '') {
+            const canvas = document.getElementById(`canvas${size}${type ? '_' + type : ''}`);
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Draw the base icon
+            ctx.drawImage(img, 0, 0, size, size);
+            
+            if (type === 'waiting') {
+                // Add a clock overlay for waiting icons
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+                ctx.beginPath();
+                ctx.arc(size * 0.75, size * 0.75, size * 0.25, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.strokeStyle = '#4a6cf7';
+                ctx.lineWidth = size * 0.05;
+                ctx.beginPath();
+                ctx.arc(size * 0.75, size * 0.75, size * 0.2, 0, Math.PI * 2);
+                ctx.stroke();
+                
+                // Clock hands
+                ctx.beginPath();
+                ctx.moveTo(size * 0.75, size * 0.75);
+                ctx.lineTo(size * 0.75, size * 0.6);
+                ctx.stroke();
+                
+                ctx.beginPath();
+                ctx.moveTo(size * 0.75, size * 0.75);
+                ctx.lineTo(size * 0.85, size * 0.75);
+                ctx.stroke();
+            } else if (type === 'new') {
+                // Add a notification badge for new icons
+                ctx.fillStyle = '#ff4d4d';
+                ctx.beginPath();
+                ctx.arc(size * 0.8, size * 0.2, size * 0.2, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.fillStyle = 'white';
+                ctx.font = `bold ${size * 0.25}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('1', size * 0.8, size * 0.2);
+            }
+        }
+
+        function downloadPNG(size, type = '') {
+            const canvas = document.getElementById(`canvas${size}${type ? '_' + type : ''}`);
+            const dataURL = canvas.toDataURL('image/png');
+            
+            const a = document.createElement('a');
+            a.href = dataURL;
+            a.download = `icon${size}${type ? '_' + type : ''}.png`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+</html>

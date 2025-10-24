@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Icons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .canvas-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .icon-item {
+            text-align: center;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Create Icons for FormGuard Extension</h1>
+    <p>Click the buttons below to download the icon files:</p>
+    
+    <div class="canvas-container">
+        <div class="icon-item">
+            <canvas id="canvas16" width="16" height="16"></canvas>
+            <br>
+            <button onclick="downloadIcon(16)">Download 16x16</button>
+        </div>
+        
+        <div class="icon-item">
+            <canvas id="canvas48" width="48" height="48"></canvas>
+            <br>
+            <button onclick="downloadIcon(48)">Download 48x48</button>
+        </div>
+        
+        <div class="icon-item">
+            <canvas id="canvas128" width="128" height="128"></canvas>
+            <br>
+            <button onclick="downloadIcon(128)">Download 128x128</button>
+        </div>
+        
+        <div class="icon-item">
+            <canvas id="canvas16_waiting" width="16" height="16"></canvas>
+            <br>
+            <button onclick="downloadIcon(16, 'waiting')">Download 16x16 Waiting</button>
+        </div>
+        
+        <div class="icon-item">
+            <canvas id="canvas48_waiting" width="48" height="48"></canvas>
+            <br>
+            <button onclick="downloadIcon(48, 'waiting')">Download 48x48 Waiting</button>
+        </div>
+        
+        <div class="icon-item">
+            <canvas id="canvas128_waiting" width="128" height="128"></canvas>
+            <br>
+            <button onclick="downloadIcon(128, 'waiting')">Download 128x128 Waiting</button>
+        </div>
+        
+        <div class="icon-item">
+            <canvas id="canvas16_new" width="16" height="16"></canvas>
+            <br>
+            <button onclick="downloadIcon(16, 'new')">Download 16x16 New</button>
+        </div>
+        
+        <div class="icon-item">
+            <canvas id="canvas48_new" width="48" height="48"></canvas>
+            <br>
+            <button onclick="downloadIcon(48, 'new')">Download 48x48 New</button>
+        </div>
+        
+        <div class="icon-item">
+            <canvas id="canvas128_new" width="128" height="128"></canvas>
+            <br>
+            <button onclick="downloadIcon(128, 'new')">Download 128x128 New</button>
+        </div>
+    </div>
+    
+    <script>
+        // Draw all icons when the page loads
+        window.onload = function() {
+            drawAllIcons();
+        };
+        
+        // Draw all icons
+        function drawAllIcons() {
+            const sizes = [16, 48, 128];
+            const types = ['', 'waiting', 'new'];
+            
+            for (const size of sizes) {
+                for (const type of types) {
+                    drawIcon(size, type);
+                }
+            }
+        }
+        
+        // Draw a single icon
+        function drawIcon(size, type = '') {
+            const canvas = document.getElementById(`canvas${size}${type ? '_' + type : ''}`);
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Draw base icon (a blue shield)
+            drawShield(ctx, size);
+            
+            // Add type-specific elements
+            if (type === 'waiting') {
+                drawWaitingIndicator(ctx, size);
+            } else if (type === 'new') {
+                drawNewIndicator(ctx, size);
+            }
+        }
+        
+        // Draw the shield base
+        function drawShield(ctx, size) {
+            const s = size / 16; // Scale factor
+            
+            // Blue background
+            ctx.fillStyle = '#4a6cf7';
+            ctx.beginPath();
+            ctx.arc(8 * s, 8 * s, 7 * s, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // White form icon
+            ctx.fillStyle = 'white';
+            ctx.fillRect(4 * s, 4 * s, 8 * s, 8 * s);
+            
+            // Blue inner rectangle
+            ctx.fillStyle = '#4a6cf7';
+            ctx.fillRect(5 * s, 5 * s, 6 * s, 6 * s);
+            
+            // White lines (form fields)
+            ctx.fillStyle = 'white';
+            ctx.fillRect(6 * s, 6 * s, 4 * s, 1 * s);
+            ctx.fillRect(6 * s, 8 * s, 4 * s, 1 * s);
+            ctx.fillRect(6 * s, 10 * s, 3 * s, 1 * s);
+        }
+        
+        // Draw waiting indicator (clock)
+        function drawWaitingIndicator(ctx, size) {
+            const s = size / 16; // Scale factor
+            
+            // White circle background
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.beginPath();
+            ctx.arc(12 * s, 4 * s, 3 * s, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Blue clock outline
+            ctx.strokeStyle = '#4a6cf7';
+            ctx.lineWidth = 0.5 * s;
+            ctx.beginPath();
+            ctx.arc(12 * s, 4 * s, 2 * s, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // Clock hands
+            ctx.beginPath();
+            ctx.moveTo(12 * s, 4 * s);
+            ctx.lineTo(12 * s, 2.5 * s);
+            ctx.stroke();
+            
+            ctx.beginPath();
+            ctx.moveTo(12 * s, 4 * s);
+            ctx.lineTo(13 * s, 4 * s);
+            ctx.stroke();
+        }
+        
+        // Draw new message indicator (badge)
+        function drawNewIndicator(ctx, size) {
+            const s = size / 16; // Scale factor
+            
+            // Red circle
+            ctx.fillStyle = '#ff4d4d';
+            ctx.beginPath();
+            ctx.arc(12 * s, 4 * s, 3 * s, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // White "1"
+            ctx.fillStyle = 'white';
+            ctx.font = `bold ${3 * s}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('1', 12 * s, 4 * s);
+        }
+        
+        // Download icon as PNG
+        function downloadIcon(size, type = '') {
+            const canvas = document.getElementById(`canvas${size}${type ? '_' + type : ''}`);
+            const link = document.createElement('a');
+            link.download = `icon${size}${type ? '_' + type : ''}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+</html>

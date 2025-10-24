@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <!-- Background shield -->
+  <path d="M64 8 L120 32 L120 64 C120 96 96 120 64 120 C32 120 8 96 8 64 L8 32 Z" fill="#4a6cf7" stroke="none"/>
+  
+  <!-- Inner shield -->
+  <path d="M64 20 L108 40 L108 64 C108 90 88 108 64 108 C40 108 20 90 20 64 L20 40 Z" fill="#ffffff" stroke="none"/>
+  
+  <!-- Form icon -->
+  <rect x="40" y="48" width="48" height="40" rx="2" fill="#4a6cf7" stroke="none"/>
+  
+  <!-- Form lines -->
+  <rect x="48" y="56" width="32" height="4" rx="2" fill="#ffffff" stroke="none"/>
+  <rect x="48" y="66" width="32" height="4" rx="2" fill="#ffffff" stroke="none"/>
+  <rect x="48" y="76" width="20" height="4" rx="2" fill="#ffffff" stroke="none"/>
+  
+  <!-- Lock icon -->
+  <circle cx="90" cy="90" r="16" fill="#4a6cf7" stroke="#ffffff" stroke-width="2"/>
+  <rect x="84" y="86" width="12" height="10" rx="2" fill="#ffffff" stroke="none"/>
+  <rect x="87" y="82" width="6" height="8" rx="3" fill="#ffffff" stroke="none"/>
+</svg>
