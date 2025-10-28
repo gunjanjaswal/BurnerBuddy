@@ -1,4 +1,4 @@
-// Popup script for FormGuard extension
+// Popup script for BurnerBuddy extension
 
 // DOM elements
 const inboxView = document.getElementById('inbox-view');

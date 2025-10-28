@@ -1,4 +1,4 @@
-// Background script for FormGuard extension
+// Background script for BurnerBuddy extension
 
 // We'll use a direct approach without relying on external APIs
 // This simulates having an email but doesn't actually check for real emails
@@ -20,12 +20,12 @@ let activePollingIntervals = {};
 
 // Initialize extension
 chrome.runtime.onInstalled.addListener(() => {
-  console.log('FormGuard extension installed');
+  console.log('BurnerBuddy extension installed');
   
   // Create context menu item
   chrome.contextMenus.create({
-    id: 'fill-with-formguard',
-    title: 'Fill with FormGuard',
+    id: 'fill-with-burnerbuddy',
+    title: 'Fill with BurnerBuddy',
     contexts: ['editable']
   });
   
@@ -39,7 +39,7 @@ chrome.runtime.onInstalled.addListener(() => {
 
 // Handle context menu clicks
 chrome.contextMenus.onClicked.addListener((info, tab) => {
-  if (info.menuItemId === 'fill-with-formguard') {
+  if (info.menuItemId === 'fill-with-burnerbuddy') {
     // Generate a new burner account and fill the form
     createBurnerAccount(tab.url)
       .then(burnerData => {

@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "FormGuard",
+  "name": "BurnerBuddy",
   "version": "1.0.0",
-  "description": "One-click privacy tool that fills forms with temporary data and provides a disposable inbox",
+  "description": "Your friendly privacy companion - fills forms with temporary data and provides a disposable inbox",
   "permissions": [
     "contextMenus",
     "activeTab",
