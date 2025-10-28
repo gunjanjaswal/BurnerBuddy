@@ -11,6 +11,7 @@ Simulates receiving confirmation emails locally
 All data remains on your device only
 
 What BurnerBuddy Does NOT Do
+
 ❌ Does not collect your real personal information
 ❌ Does not track your browsing history
 ❌ Does not monitor your activity
