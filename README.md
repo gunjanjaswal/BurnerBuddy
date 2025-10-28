@@ -1,14 +1,17 @@
-# FormGuard - Privacy-First Form Filler Chrome Extension
+# 🛡️ FormGuard - Privacy-First Form Filler Chrome Extension
 
-FormGuard is a one-click consumer privacy tool that combines a dummy data form filler with a temporary inbox generator. It allows you to sign up for services without using your real email address, helping you avoid spam and protect your privacy.
+**Your digital privacy guardian for hassle-free signups**
 
-## Features
+FormGuard is a one-click consumer privacy tool that combines a dummy data form filler with a simulated temporary inbox. It allows you to sign up for services without using your real email address, helping you avoid spam and protect your privacy.
 
-- **One-Click Form Filling**: Right-click on any form field and select "Fill with FormGuard" to automatically fill all fields with temporary data.
-- **Temporary Email Inbox**: Each burner account comes with a temporary email address that can receive confirmation emails.
-- **Email Notifications**: The extension icon changes when you receive a new email, and you can view the email content directly in the popup.
-- **Confirmation Links**: Easily click on confirmation links in emails to verify your account.
-- **Multiple FormGuard Accounts**: Create and manage multiple protected accounts for different websites.
+## ✨ Features
+
+- **🎯 One-Click Form Filling**: Right-click on any form field and select "Fill with FormGuard" to automatically fill all fields with temporary data.
+- **📧 Simulated Email Inbox**: Each burner account comes with a temporary email address that can receive simulated confirmation emails.
+- **🔔 Email Notifications**: The extension badge changes when you receive a new email, and you can view the email content directly in the popup.
+- **✅ Confirmation Links**: Easily click on confirmation links in emails to verify your account.
+- **🗂️ Multiple Accounts**: Create and manage multiple protected accounts for different websites.
+- **🔒 Privacy-First**: All data is stored locally in your browser - no external servers, no tracking.
 
 ## Installation
 
@@ -42,21 +45,23 @@ FormGuard is a one-click consumer privacy tool that combines a dummy data form f
 2. Click on the "My Accounts" tab to view all your protected accounts.
 3. Click on an account to view its emails.
 
-## Technical Details
+## 🔧 Technical Details
 
-### API Integration
+### Email Simulation
 
-This extension uses the [Mail.tm](https://mail.tm/) API for temporary email functionality. The API allows for:
+This extension uses a simulated email system for demonstration purposes:
 
-- Creating temporary email addresses
-- Checking for new messages
-- Reading message content
+- Generates temporary email addresses with custom domains
+- Simulates receiving confirmation emails
+- All email data is stored locally in your browser
 
 ### Privacy Considerations
 
-- All account data is stored locally in your browser's storage.
-- No data is sent to any servers except for the Mail.tm API for email functionality.
-- The extension does not track your browsing history or collect any personal information.
+- ✅ All account data is stored locally in your browser's storage
+- ✅ No external API calls or data transmission
+- ✅ No tracking or analytics
+- ✅ No personal information collection
+- ✅ Open source and transparent code
 
 ## Development
 
@@ -80,6 +85,31 @@ formguard-extension/
 
 No build process is required. The extension can be loaded directly as an unpacked extension in Chrome's developer mode.
 
-## License
+## 📄 License
 
 This project is open source and available under the MIT License.
+
+## 👨‍💻 Author
+
+**Made with ❤️, a little caffeine ☕, and zero questionable shortcuts**
+
+Created by [Gunjan Jaswal](https://gunjanjaswal.me)
+
+### ☕ Support This Project
+
+If you find FormGuard useful, consider buying me a coffee! Your support helps keep this project alive and caffeinated.
+
+<a href="https://buymeacoffee.com/gunjanjaswal" target="_blank">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 50px !important;width: 180px !important;" >
+</a>
+
+---
+
+<div align="center">
+  <p>© 2025 FormGuard. All rights reserved.</p>
+  <p>
+    <a href="https://gunjanjaswal.me">Website</a> •
+    <a href="https://github.com/gunjanjaiswal">GitHub</a> •
+    <a href="https://buymeacoffee.com/gunjanjaswal">Buy Me a Coffee</a>
+  </p>
+</div>

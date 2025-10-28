@@ -314,14 +314,15 @@ function updateExtensionIcon(state) {
   chrome.action.setBadgeText({ text: badgeText });
   chrome.action.setBadgeBackgroundColor({ color: badgeColor });
   
+  // Temporarily disabled until we have valid icon files
   // Always use the same icon
-  const path = {
-    16: '/images/icon16.png',
-    48: '/images/icon48.png',
-    128: '/images/icon128.png'
-  };
-  
-  chrome.action.setIcon({ path });
+  // const path = {
+  //   16: '/images/icon16.png',
+  //   48: '/images/icon48.png',
+  //   128: '/images/icon128.png'
+  // };
+  // 
+  // chrome.action.setIcon({ path });
 }
 
 // Generate a simulated email for testing
