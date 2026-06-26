@@ -1,115 +1,150 @@
-# 🔥 BurnerBuddy - Privacy-First Form Filler Chrome Extension
+<div align="center">
 
-**Your friendly privacy companion for hassle-free signups**
+# 🔥 BurnerBuddy
 
-BurnerBuddy is a one-click consumer privacy tool that combines a dummy data form filler with a simulated temporary inbox. It allows you to sign up for services without using your real email address, helping you avoid spam and protect your privacy.
+### Privacy-First Form Filler &amp; Simulated Burner Inbox for Chrome
+
+**Your friendly privacy companion for hassle-free signups.**
+
+[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?logo=googlechrome&logoColor=white)](https://chrome.google.com/webstore)
+[![Manifest V3](https://img.shields.io/badge/Manifest-V3-34A853?logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/mv3/intro/)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/gunjanjaswal/BurnerBuddy/releases)
+[![License](https://img.shields.io/badge/License-MIT-success)](LICENSE)
+[![Privacy](https://img.shields.io/badge/Privacy-100%25%20Local-FF5E5B)](PRIVACY.md)
+[![Author](https://img.shields.io/badge/by-Gunjan%20Jaswal-9333ea)](https://www.gunjanjaswal.me)
+[![Support on Ko-fi](https://img.shields.io/badge/Ko--fi-Support-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/gunjanjaswal)
+
+</div>
+
+---
+
+BurnerBuddy is a one-click consumer privacy tool that combines a **dummy data form filler** with a **simulated temporary inbox**. Sign up for services without handing over your real email address — avoid spam, dodge marketing lists, and keep your real identity out of databases you don't trust.
+
+> ⚠️ **Note:** The inbox is a *local simulation* for demos and testing. It does not connect to a real mail server — see [Technical Details](#-technical-details).
+
+## 📑 Table of Contents
+
+- [Features](#-features)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Technical Details](#-technical-details)
+- [Privacy](#-privacy)
+- [Project Structure](#-project-structure)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Support](#-support)
 
 ## ✨ Features
 
-- **🎯 One-Click Form Filling**: Right-click on any form field and select "Fill with BurnerBuddy" to automatically fill all fields with temporary data.
-- **📧 Simulated Email Inbox**: Each burner account comes with a temporary email address that can receive simulated confirmation emails.
-- **🔔 Email Notifications**: The extension badge changes when you receive a new email, and you can view the email content directly in the popup.
-- **✅ Confirmation Links**: Easily click on confirmation links in emails to verify your account.
-- **🗂️ Multiple Accounts**: Create and manage multiple protected accounts for different websites.
-- **🔒 Privacy-First**: All data is stored locally in your browser - no external servers, no tracking.
+| | Feature | What it does |
+|---|---|---|
+| 🎯 | **One-Click Form Filling** | Right-click any form field → *"Fill with BurnerBuddy"* to populate every field with realistic dummy data. |
+| 📧 | **Simulated Email Inbox** | Each burner account gets a temporary address that can receive simulated confirmation mail. |
+| 🔔 | **Email Notifications** | The toolbar badge updates when a new message arrives; read it right in the popup. |
+| ✅ | **Confirmation Links** | One click follows the verification link inside a simulated email. |
+| 🗂️ | **Multiple Accounts** | Create and manage separate burner identities per website. |
+| 🔒 | **Privacy-First** | Everything is stored locally in your browser — no servers, no tracking. |
 
-## Installation
+## 🚀 Installation
 
-### Developer Mode Installation
+### Developer Mode (Load Unpacked)
 
-1. Download or clone this repository to your local machine.
-2. Open Chrome and navigate to `chrome://extensions/`.
-3. Enable "Developer mode" by toggling the switch in the top-right corner.
-4. Click "Load unpacked" and select the `BurnerBuddy` folder.
-5. The BurnerBuddy extension should now be installed and visible in your Chrome toolbar.
+1. **Download** or clone this repository:
+   ```bash
+   git clone https://github.com/gunjanjaswal/BurnerBuddy.git
+   ```
+2. Open Chrome and go to `chrome://extensions/`.
+3. Toggle **Developer mode** on (top-right corner).
+4. Click **Load unpacked** and select the `BurnerBuddy` folder.
+5. Pin BurnerBuddy from the toolbar puzzle icon and you're ready. 🔥
 
-## Usage
+## 💻 Usage
 
-### Creating a Protected Account
+### Create a Protected Account
+1. Open any website with a signup form.
+2. Right-click a form field (name, email, password).
+3. Choose **Fill with BurnerBuddy** from the context menu.
+4. Every field is filled with temporary data — submit the form.
 
-1. Navigate to a website with a signup form.
-2. Right-click on any form field (name, email, password).
-3. Select "Fill with BurnerBuddy" from the context menu.
-4. The extension will automatically fill all form fields with temporary data.
-5. Submit the form to create your account.
+### Check for Emails
+1. When a confirmation arrives, the extension icon changes to flag a new message.
+2. Click the icon to open the popup and read the email.
+3. Hit **Confirm Email** to follow the verification link.
 
-### Checking for Emails
-
-1. When you receive a confirmation email, the extension icon will change to indicate a new message.
-2. Click on the extension icon to open the popup.
-3. View the email content and click the "Confirm Email" button to open the confirmation link.
-
-### Managing Protected Accounts
-
-1. Click on the extension icon to open the popup.
-2. Click on the "My Accounts" tab to view all your protected accounts.
-3. Click on an account to view its emails.
+### Manage Accounts
+1. Open the popup and switch to the **My Accounts** tab.
+2. Browse every burner identity you've created.
+3. Click an account to view its inbox.
 
 ## 🔧 Technical Details
 
 ### Email Simulation
+BurnerBuddy ships a **self-contained, simulated** mail system for demonstration and testing:
 
-This extension uses a simulated email system for demonstration purposes:
+- Generates temporary email addresses with custom domains.
+- Simulates the arrival of confirmation emails.
+- Stores all message data locally in browser storage.
 
-- Generates temporary email addresses with custom domains
-- Simulates receiving confirmation emails
-- All email data is stored locally in your browser
+### Architecture
+- **Manifest V3** service-worker background script (`js/background.js`).
+- **Content script** (`js/content.js`) injected into pages for context-menu form filling.
+- **Popup UI** (`html/popup.html` + `js/popup.js` + `css/popup.css`) for accounts and inbox.
 
-### Privacy Considerations
+## 🔒 Privacy
 
-- ✅ All account data is stored locally in your browser's storage
-- ✅ No external API calls or data transmission
-- ✅ No tracking or analytics
-- ✅ No personal information collection
-- ✅ Open source and transparent code
+- ✅ All account data lives in your browser's local storage.
+- ✅ No external API calls, no data transmission.
+- ✅ No tracking, no analytics.
+- ✅ No personal information is collected.
+- ✅ Fully open source and auditable.
 
-## Development
+See [PRIVACY.md](PRIVACY.md) for the full policy.
 
-### Project Structure
+## 📁 Project Structure
 
 ```
 BurnerBuddy/
-├── manifest.json        # Extension configuration
+├── manifest.json        # Extension configuration (MV3)
 ├── js/
-│   ├── background.js    # Background script for core functionality
-│   ├── content.js       # Content script injected into web pages
-│   └── popup.js         # Script for the popup UI
+│   ├── background.js    # Service worker — core logic & context menu
+│   ├── content.js       # Injected into pages to fill forms
+│   └── popup.js         # Popup UI logic
 ├── html/
-│   └── popup.html       # Popup UI HTML
+│   ├── popup.html       # Popup UI
+│   └── onboarding.html  # First-run welcome page
 ├── css/
-│   └── popup.css        # Popup UI styles
-└── images/              # Extension icons
+│   └── popup.css        # Popup styles
+└── images/              # Extension icons & assets
 ```
 
-### Building from Source
+> **Building from source:** none required. Load the folder directly as an unpacked extension.
 
-No build process is required. The extension can be loaded directly as an unpacked extension in Chrome's developer mode.
+## 🤝 Contributing
+
+Contributions are welcome! Open an issue or submit a pull request. Bug reports, new dummy-data locales, and UI polish are all appreciated.
 
 ## 📄 License
 
-This project is open source and available under the MIT License.
+Released under the **MIT License** — free to use, modify, and distribute.
 
-## 👨‍💻 Author
+## ☕ Support
 
-**Made with ❤️, a little caffeine ☕, and zero questionable shortcuts**
+If BurnerBuddy keeps your inbox clean, consider supporting development on Ko-fi. It keeps the project alive and caffeinated. 🙏
 
-Created by [Gunjan Jaswal](https://gunjanjaswal.me)
+<div align="center">
 
-### ☕ Support This Project
+[![Support on Ko-fi](https://img.shields.io/badge/Ko--fi-Support-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/gunjanjaswal)
 
-If you find BurnerBuddy useful, consider buying me a coffee! Your support helps keep this project alive and caffeinated.
-
-<a href="https://buymeacoffee.com/gunjanjaswal" target="_blank">
-  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 50px !important;width: 180px !important;" >
-</a>
+</div>
 
 ---
 
 <div align="center">
-  <p>© 2025 BurnerBuddy. All rights reserved.</p>
-  <p>
-    <a href="https://gunjanjaswal.me">Website</a> •
-    <a href="https://github.com/gunjanjaiswal">GitHub</a> •
-    <a href="https://buymeacoffee.com/gunjanjaswal">Buy Me a Coffee</a>
-  </p>
+
+**Made with ❤️, a little caffeine ☕, and zero questionable shortcuts**
+
+Created by [**Gunjan Jaswal**](https://www.gunjanjaswal.me) • [GitHub](https://github.com/gunjanjaswal) • [Ko-fi](https://ko-fi.com/gunjanjaswal)
+
+<sub>© 2025 BurnerBuddy. All rights reserved.</sub>
+
 </div>
